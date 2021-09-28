@@ -2,12 +2,21 @@ name: rubocop-rspec demo
 on: [push]
 jobs:
   Rubocop-Rspec-Demo:
-    image: ruby:latest
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          bundle install
+
       - name: Run Cop Specific Exclude
         run: |
-          bundle exec rubocop --only RSpec -c .rubocop_cop_only.yml
+          bundle exec rubocop --only RSpec -c .rubocop_cop_exclude.yml
 
-      - name: Run Department Exclude
+      - name: Run Department Only Exclude
         run: |
           bundle exec rubocop --only RSpec -c .rubocop_department_exclude.yml
