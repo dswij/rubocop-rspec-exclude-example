@@ -1,0 +1,16 @@
+require:
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - Gemfile
+
+# Department Exclude is not respected
+RSpec:
+  Exclude:
+    - test_spec.rb
+
+# Cop-specific Exclude is respected
+# RSpec/BeforeAfterAll:
+#   Exclude:
+#     - test_spec.rb
