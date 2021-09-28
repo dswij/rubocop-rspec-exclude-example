@@ -1,0 +1,13 @@
+name: rubocop-rspec demo
+on: [push]
+jobs:
+  Rubocop-Rspec-Demo:
+    image: ruby:latest
+    steps:
+      - name: Run Cop Specific Exclude
+        run: |
+          bundle exec rubocop --only RSpec -c .rubocop_cop_only.yml
+
+      - name: Run Department Exclude
+        run: |
+          bundle exec rubocop --only RSpec -c .rubocop_department_exclude.yml
